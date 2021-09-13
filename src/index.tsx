@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from 'infrastructure/views/App'
 import reportWebVitals from 'reportWebVitals'
+
+import App from 'infrastructure/views/App'
+import { AuthProvider } from 'infrastructure/views/hooks/useAuth'
 
 import 'index.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
