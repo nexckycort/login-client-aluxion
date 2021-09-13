@@ -6,7 +6,8 @@ import reportWebVitals from 'reportWebVitals'
 import App from 'infrastructure/views/App'
 import { AuthProvider } from 'infrastructure/views/hooks/useAuth'
 
-import 'index.css'
+import 'bootstrap/dist/js/bootstrap.bundle'
+import 'index.scss'
 
 ReactDOM.render(
   <React.StrictMode>
