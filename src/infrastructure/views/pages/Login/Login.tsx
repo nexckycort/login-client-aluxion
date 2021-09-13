@@ -42,13 +42,23 @@ const Login = (): JSX.Element => {
     <main className="center">
       <form onSubmit={handleOnSubmit}>
         <h1>Login App</h1>
-        <Input {...email} placeholder="name@example.com" />
-        <Input {...password} placeholder="******" />
-        <Link to={'/forgot-password'}>Forgot Password?</Link>
+        {status === STATUS.ERROR && (
+          <div className="alert alert-danger" role="alert">
+            {error.message}
+          </div>
+        )}
+        <div className="mb-3">
+          <Input {...email} placeholder="name@example.com" />
+        </div>
+        <div className="mb-3">
+          <Input {...password} placeholder="******" />
+        </div>
+        <div className="mb-2">
+          <Link to={'/forgot-password'}>Forgot Password?</Link>
+        </div>
         <Button type="submit" disabled={status === STATUS.PENDING}>
           Log In
         </Button>
-        {status === STATUS.ERROR && <span>{error.message}</span>}
       </form>
       <Link to={'/signup'}>Sign Up</Link>
     </main>

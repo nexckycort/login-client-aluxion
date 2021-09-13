@@ -24,6 +24,9 @@ const useAsync = <T extends any>(asyncFunction: any, immediate = true) => {
       .catch((error: Error) => {
         setError(error)
         setStatus(STATUS.ERROR)
+        setTimeout(() => {
+          setStatus(STATUS.IDLE)
+        }, 3000)
       })
   }, [asyncFunction])
 

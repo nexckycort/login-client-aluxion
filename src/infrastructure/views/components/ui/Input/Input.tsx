@@ -9,7 +9,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const Input: React.FC<Props> = (props) => {
   const { className, children, onInput, ...rest } = props
 
-  const rootClassName = cn(className)
+  const rootClassName = cn(className, 'form-control')
 
   const handleOnInput = (event: React.ChangeEvent<HTMLInputElement>): any => {
     if (onInput !== undefined) {
