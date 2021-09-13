@@ -1,4 +1,3 @@
-import { Session } from 'domain/models/Session'
 import { apiV1 } from 'infrastructure/config/api'
 import { SessionDTO } from 'infrastructure/dto/SessionDTO'
 import { UserDTO } from 'infrastructure/dto/UserDTO'
@@ -10,14 +9,15 @@ export const sessionRepository = {
       body: userDTO
     })
 
-    const auth = {
-      ...result,
-      response: {
-        ...result.response,
-        data: result.response?.data as Session
+    return result
+  },
+  forgotPassword: async (email: string) => {
+    const result = await http.post<undefined>(apiV1.forgotPassword, {
+      body: {
+        email
       }
-    }
-    return auth
+    })
+    return result
   },
   logout: async () => {
     // TODO: request to endpoint to delete session

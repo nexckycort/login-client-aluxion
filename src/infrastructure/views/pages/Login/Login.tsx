@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useAuth, useField, useAsync, useRouter } from 'infrastructure/views/hooks'
-import { Button, Input } from 'infrastructure/views/components/ui'
+import { Alert, Button, Input } from 'infrastructure/views/components/ui'
 import { STATUS } from 'infrastructure/views/hooks/useAsync'
 
 const Login = (): JSX.Element => {
@@ -42,16 +42,12 @@ const Login = (): JSX.Element => {
     <main className="center">
       <form onSubmit={handleOnSubmit}>
         <h1>Login App</h1>
-        {status === STATUS.ERROR && (
-          <div className="alert alert-danger" role="alert">
-            {error.message}
-          </div>
-        )}
+        {status === STATUS.ERROR && <Alert type="danger">{error.message}</Alert>}
         <div className="mb-3">
-          <Input {...email} placeholder="name@example.com" />
+          <Input {...email} required placeholder="name@example.com" />
         </div>
         <div className="mb-3">
-          <Input {...password} placeholder="******" />
+          <Input {...password} required placeholder="******" />
         </div>
         <div className="mb-2">
           <Link to={'/forgot-password'}>Forgot Password?</Link>
