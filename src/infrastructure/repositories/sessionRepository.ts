@@ -13,9 +13,13 @@ export const sessionRepository = {
   },
   forgotPassword: async (email: string) => {
     const result = await http.post<undefined>(apiV1.forgotPassword, {
-      body: {
-        email
-      }
+      body: { email }
+    })
+    return result
+  },
+  signup: async (userDTO: UserDTO) => {
+    const result = await http.post<undefined>(apiV1.signup, {
+      body: userDTO
     })
     return result
   },

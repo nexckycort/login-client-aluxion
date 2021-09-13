@@ -18,6 +18,10 @@ export const sessionService = {
     const result = await sessionRepository.forgotPassword(email)
     return result
   },
+  signup: async (userDTO: UserDTO) => {
+    const result = await sessionRepository.signup(userDTO)
+    return result
+  },
   logout: async () => {
     await sessionRepository.logout()
   }
